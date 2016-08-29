@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 import AlbumStore from '../../stores/AlbumStore'
 import UserActions from '../../actions/UserActions'
 import AddAlbum from './AddAlbum'
-import AlbumRow from './AlbumRow'
 
 export default class AllAlbums extends Component {
   constructor(){
@@ -30,7 +29,7 @@ export default class AllAlbums extends Component {
     } else {
       albumView = this.state.albums.map(album =>{
         return (
-          <div>
+          <div key={album._id}>
             <Link to={`/album/${album._id}`}>
             <h1>{album.name}</h1>
             </Link>
