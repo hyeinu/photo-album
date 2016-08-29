@@ -12,6 +12,7 @@ export default class AlbumRow extends Component {
       image: null
     }
     this._onChange = this._onChange.bind(this)
+    this._delete = this._delete.bind(this)
   }
   componentDidMount(){
     AlbumStore.startListening(this._onChange)
@@ -23,8 +24,12 @@ export default class AlbumRow extends Component {
   _onChange(){
   this.setState({image: AlbumStore.getImage()})
   }
+  _delete(id){
+    UserActions.deleteImage(id);
+  }
   render() {
     let { image } = this.state
+    console.log('image:', image)
   if(!image){
     return(
       <h1>Loading</h1>
@@ -34,7 +39,7 @@ export default class AlbumRow extends Component {
       <div>
       <img src={image.pic_url} className="img-rounded"/>
       <h3>{image.time}</h3>
-      <button className="btn">Delete</button>
+      <button onClick={this._delete.bind(null, image._id)} className="btn">Delete</button>
       </div>
     )
     }

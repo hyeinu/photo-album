@@ -12,6 +12,7 @@ export default class AllAlbums extends Component {
       albums: UserActions.getAlbums()
     }
     this._onChange = this._onChange.bind(this)
+    this._delete = this._delete.bind(this)
   }
   componentDidMount(){
     AlbumStore.startListening(this._onChange)
@@ -21,6 +22,9 @@ export default class AllAlbums extends Component {
   }
   _onChange(){
   this.setState({albums: AlbumStore.getAlbums()})
+  }
+  _delete(id){
+    UserActions.deleteAlbum(id);
   }
   render() {
     let albumView
@@ -34,7 +38,7 @@ export default class AllAlbums extends Component {
             <h1>{album.name}</h1>
             </Link>
             <button onClick={this._edit}>Edit</button>
-            <button onClick={this._delete}>Delete</button>
+            <button onClick={this._delete.bind(null, album._id)}>Delete</button>
           </div>
         )
       })

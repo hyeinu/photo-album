@@ -2,6 +2,8 @@ import { EventEmitter } from 'events'
 import AppDispatcher from '../AppDispatcher'
 
 let _albums = [];
+let _album = null
+let _image = null
 
 class AlbumStore extends EventEmitter{
   constructor(){
@@ -10,10 +12,16 @@ class AlbumStore extends EventEmitter{
     AppDispatcher.register(action =>{
       switch(action.type){
         case 'RECIEVE_ALL_ALBUMS':
+        _albums = action.albums
+        this.emit('Change')
         break;
         case 'RECIEVE_ONE_ALBUM':
+        _album = action.album
+        this.emit('Change')
         break;
         case 'RECIEVE_IMAGE':
+        _image = action.image
+        this.emit('Change')
         break;
       }
     })
@@ -26,6 +34,12 @@ class AlbumStore extends EventEmitter{
   }
   getAlbums(){
     return _albums
+  }
+  getAlbum(){
+    return _album
+  }
+  getImage(){
+    return _image
   }
 }
 

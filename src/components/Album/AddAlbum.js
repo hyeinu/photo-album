@@ -14,6 +14,9 @@ export default class App extends Component {
   }
   addNewAlbum(e){
     e.preventDefault()
+    let album = {}
+    album.name = this.state.name
+    UserActons.addAlbum(album)
   }
   render() {
     return (
