@@ -17,10 +17,10 @@ export default class App extends Component {
   }
   render() {
     return (
-      <form className ="form-inline" onSubmit={this.addNewAlbum}>
+      <div className="form-inline">
         <input type="text" className="form-control" placeholder="New Album" value={this.state.name} onChange={this._onInputChange}/>
-        <button className="btn btn-info" type="submit"><i className="glyphicon glyphicon-plus"></i></button>
-      </form>
+        <button className="btn btn-info" type="submit" onClick={this.addNewAlbum}><i className="glyphicon glyphicon-plus"></i></button>
+      </div>
     )
   }
 }
