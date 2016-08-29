@@ -15,8 +15,6 @@ render(
       <Route path='/albums' component={AllAlbums}></Route>
       <Route path='/album/:id' component={Album}></Route>
       <Route path='/image/:id' component={Image}></Route>
-      {/*
-      */}
     </Route>
   </Router>,
   document.getElementById('root')

@@ -9,8 +9,10 @@ export default class AllAlbums extends Component {
   constructor(){
     super()
     this.state = {
+      name: '',
       albums: UserActions.getAlbums()
     }
+    this._onInputChange = this._onInputChange.bind(this)
     this._onChange = this._onChange.bind(this)
     this._delete = this._delete.bind(this)
   }
@@ -26,6 +28,14 @@ export default class AllAlbums extends Component {
   _delete(id){
     UserActions.deleteAlbum(id);
   }
+  _edit(id){
+    let obj = {}
+    obj.name = this.state.name
+    UserActions.editAlbum(id, obj);
+  }
+  _onInputChange(e){
+    this.setState({name: e.target.value})
+  }
   render() {
     let albumView
     if(!this.state.albums){
@@ -34,19 +44,19 @@ export default class AllAlbums extends Component {
       albumView = this.state.albums.map(album =>{
         return (
           <div key={album._id}>
-            <Link to={`/album/${album._id}`}>
-            <h1>{album.name}</h1>
-            </Link>
-            <button onClick={this._edit}>Edit</button>
-            <button onClick={this._delete.bind(null, album._id)}>Delete</button>
+          <Link to={`/album/${album._id}`}>
+          <h1>{album.name}</h1>
+          </Link>
+          <button className="btn btn-info" onClick={this._edit.bind(null, album._id)}>Edit</button>
+          <button className="btn btn-danger" onClick={this._delete.bind(null, album._id)}>Delete</button>
           </div>
         )
       })
-
     }
     return (
       <div>
       <AddAlbum />
+      <input type="text" className="form-control" placeholder="Edit Album Name" value={this.state.name} onChange={this._onInputChange}/>
       {albumView}
       </div>
     )

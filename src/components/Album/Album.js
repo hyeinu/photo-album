@@ -52,13 +52,12 @@ export default class AlbumRow extends Component {
         )
       } else{
         albumView = album.images.map(image =>{
-
           return (
-              <div className="col-xs-4" key={image._id}>
-                <Link to={`/image/${image._id}`}>
-                  <img src={image.pic_url} alt="" className="img-responsive img-rounded"/>
-                </Link>
-              </div>
+            <div className="col-xs-4" key={image._id}>
+              <Link to={`/image/${image._id}`}>
+                <img src={image.pic_url} alt="" className="img-responsive img-rounded"/>
+              </Link>
+            </div>
           )
         })
       }
