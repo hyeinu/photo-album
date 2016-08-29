@@ -15,6 +15,7 @@ export default class AllAlbums extends Component {
     this._onInputChange = this._onInputChange.bind(this)
     this._onChange = this._onChange.bind(this)
     this._delete = this._delete.bind(this)
+    this._edit = this._edit.bind(this)
   }
   componentDidMount(){
     AlbumStore.startListening(this._onChange)
@@ -32,6 +33,7 @@ export default class AllAlbums extends Component {
     let obj = {}
     obj.name = this.state.name
     UserActions.editAlbum(id, obj);
+    this.setState({name: ''})
   }
   _onInputChange(e){
     this.setState({name: e.target.value})

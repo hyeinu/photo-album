@@ -55,7 +55,7 @@ const API = {
     .catch(console.error)
   },
   editAlbum(id, obj){
-    axios.post(`/api/albums/${id}`, obj)
+    axios.put(`/api/albums/${id}`, obj)
     .then(() => {
       this.getAlbums()
       RouteActions.route(`/albums`)
