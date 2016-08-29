@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
-import Modal from './Modal'
-import OwnerModal from './OwnerModal'
+// import Modal from './Modal'
+// import OwnerModal from './OwnerModal'
 
 export default class App extends Component {
   constructor(props){
@@ -30,7 +30,6 @@ export default class App extends Component {
     this.setState({showOwnModal:false})
   }
   render() {
-    let term = ''
     return (
       <div>
         <nav className="navbar navbar-default">
@@ -47,8 +46,8 @@ export default class App extends Component {
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/search/owners">Owner</Link></li>
-              <li className="dropdown">
+                <li><Link to="/albums">Albums</Link></li>
+              {/* <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pet Types <span className="caret"></span></a>
                 <ul className="dropdown-menu">
                   <li><Link to="/search/cat">Cat</Link></li>
@@ -58,7 +57,7 @@ export default class App extends Component {
                   <li role="separator" className="divider"></li>
                   <li><Link to="/search/pet">All Pets</Link></li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
             <ul className="nav navbar-nav navbar-right">
               {/* <li><a href="#" onClick={this._showOwnModal}>Register</a></li>
@@ -68,7 +67,7 @@ export default class App extends Component {
           </div>
         </nav>
         <div className="container">
-          <h1 className="text-center">Animal Farm</h1>
+          <h1 className="text-center">Photo Album</h1>
             <div className="row">
               {this.props.children}
             </div>
