@@ -1,4 +1,4 @@
-mport React, { Component } from 'react';
+import React, { Component } from 'react';
 
 import UserActions from '../../actions/UserActions'
 
@@ -9,7 +9,6 @@ export default class AlbumRow extends Component {
   }
 
   render() {
-  return (
     let { name, images, _id } = this.props.album
     let img_src
     if(!images.length){
@@ -25,7 +24,8 @@ export default class AlbumRow extends Component {
         </Link>
       )
     }
-    <div className="col-xs-4" key={_id}>
+  return (
+    <div className="col-xs-4">
       <h1>{name}</h1>
       {img_src}
       <div className="row">
@@ -37,13 +37,6 @@ export default class AlbumRow extends Component {
         </div>
       </div>
     </div>
-    {/* <tr>
-      <td className="col-xs-8">
-      <h1>Albums</h1>
-      </td>
-      <td className="col-xs-2">Edit</td>
-      <td className="col-xs-2">Delete</td>
-    </tr> */}
     )
   }
 }
