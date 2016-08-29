@@ -57,9 +57,9 @@ export default class AllAlbums extends Component {
     }
     return (
       <div>
-      <AddAlbum />
-      <input type="text" className="form-control" placeholder="Edit Album Name" value={this.state.name} onChange={this._onInputChange}/>
-      {albumView}
+        <AddAlbum />
+        <input type="text" className="form-control" placeholder="Edit Album Name" value={this.state.name} onChange={this._onInputChange}/>
+        {albumView}
       </div>
     )
   }
